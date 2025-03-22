@@ -4,7 +4,8 @@ include '../templates/nav.php';
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="MK Time - Elegance and Precision in Watchmaking">
@@ -20,29 +21,31 @@ include '../templates/nav.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> 
-  </head>
-  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</head>
+
+<body>
     <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-6">
-              <h2 class="text-center mt-5">Login</h2>
-              <form id="loginForm">
-                  <div class="mb-3">
-                      <label for="loginEmail" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="loginEmail" required placeholder="Enter email">
-                  </div>
-                  <div class="mb-3">
-                      <label for="loginPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="loginPassword" required placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary w-100">Login</button>
-                  <div class="text-center mt-3">
-                      <span>Don't have an account? <a href="reg.html">Register here</a></span>
-                  </div>
-              </form>
-          </div>
-      </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mt-5">Login</h2>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" required placeholder="Enter email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <div class="text-center mt-3">
+                        <span>Don't have an account? <a href="reg.html">Register here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-	</body>
+</body>
+
 </html>
