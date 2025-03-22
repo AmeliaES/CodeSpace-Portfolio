@@ -1,3 +1,7 @@
+<?php
+include '../templates/nav.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,11 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="MK Time - Elegance and Precision in Watchmaking">
     <meta property="og:description" content="Discover the story of MK Time, founded in Edinburgh with a passion for creating timeless, elegant timepieces that blend craftsmanship and innovation.">
-    <meta property="og:image" content="https://codespace-portfolio-gs4a.onrender.com/images/banner_image.jpg">
-    <meta property="og:url" content="https://codespace-portfolio-gs4a.onrender.com">
     <meta property="og:type" content="website">
     <title>MK TIME</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
@@ -19,38 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">MK TIME</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-          </li>
-           
-          </ul>
-          <span class="navbar-text">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
-        <li class="nav-item">
-              <a class="nav-link" href="reg.html">Register</a>
-            </li>
-      </ul>
-          </span>
-        </div>
-      </div>
-    </nav>
     <div class="container-fluid">
       <h4 class="row justify-content-center">Products</h4>
       <div class="row justify-content-center">
@@ -58,7 +28,7 @@
 
           <div class="card-group">
             <div class="card text-center m-3">
-              <img src="images/watch1.jpg" class="card-img-top" alt="...">
+              <img src="assets/images/watch1.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Fabulous Watch</h5>
                 <p class="card-text">Text placeholder for description of this really fabulous, lovely watch.</p>
@@ -75,7 +45,7 @@
             </div>
     
             <div class="card text-center m-3">
-              <img src="images/watch2.jpg" class="card-img-top" alt="...">
+              <img src="assets/images/watch2.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Very Very Fabulous Watch</h5>
                 <p class="card-text">Text placeholder for  really long text description of this really fabulous, lovely watch. Text is longer but the card height is the same.</p>
@@ -92,7 +62,7 @@
             </div>
     
             <div class="card text-center m-3">
-              <img src="images/watch3.jpg" class="card-img-top" alt="...">
+              <img src="assets/images/watch3.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Very Very Fabulous Watch</h5>
                 <p class="card-text">Text placeholder for  really long text description of this really fabulous, lovely watch. Text is longer but the card height is the same.</p>

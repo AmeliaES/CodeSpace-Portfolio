@@ -1,3 +1,7 @@
+<?php
+include '../templates/nav.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="MK Time - Elegance and Precision in Watchmaking">
     <meta property="og:description" content="Discover the story of MK Time, founded in Edinburgh with a passion for creating timeless, elegant timepieces that blend craftsmanship and innovation.">
-    <meta property="og:image" content="https://codespace-portfolio-gs4a.onrender.com/images/banner_image.jpg">
-    <meta property="og:url" content="https://codespace-portfolio-gs4a.onrender.com">
     <meta property="og:type" content="website">
     <title>MK TIME</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -21,7 +23,7 @@
       /* Custom CSS to style the image banner */
       .image-banner {
         height: 250px; 
-        background-image: url('images/banner_image.jpg');
+        background-image: url('assets/images/banner_image.jpg');
         background-size: cover; 
         background-position: center; 
         display: flex;
@@ -38,40 +40,6 @@
     </style>
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">MK TIME</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-          </li>
-           
-          </ul>
-          <span class="navbar-text">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
-        <li class="nav-item">
-              <a class="nav-link" href="reg.html">Register</a>
-            </li>
-      </ul>
-          </span>
-        </div>
-      </div>
-    </nav>
-
     <div class="container-fluid p-0">
       <div class="image-banner">
         <!-- <h1 class="display-5 p-5">Luxury Swiss Watches</h1> -->
@@ -96,7 +64,7 @@
           <p>MK Time is not just a watch brand; it’s a journey of passion, dedication, and innovation. It all started in the beautiful city of Edinburgh, where two visionary women, Maya Kensington and Lily Montgomery, came together with a shared dream to create timepieces that merge elegance, craftsmanship, and the spirit of tradition. Edinburgh, with its rich history and a blend of old-world charm and modern vibrancy, became the perfect backdrop for their venture.</p>
         </div>
         <div class="col-sm-6 order-sm-first">
-          <img src="images/edinburgh.jpg" alt="edinburgh" style="width:100%">
+          <img src="assets/images/edinburgh.jpg" alt="edinburgh" style="width:100%">
         </div>
       </div>
       <div class="row pb-3">
@@ -105,7 +73,7 @@
           <p>Maya and Lily met while working in luxury goods—Maya, a precision-focused horologist, and Lily, a designer with a passion for fine craftsmanship. Bonding over their love of Swiss watches, they set off on a journey to create something truly unique. After years of sourcing top materials and learning from the best watchmakers, they founded MK Time. Their goal was simple: to design watches that not only told time but also told a story—one of elegance, quality, and modern innovation. For them, a watch is more than an accessory; it's a reflection of who you are.</p>
         </div>
         <div class="col-sm-6 order-sm-last">
-          <img src="images/two_people.jpg" alt="edinburgh" style="width:100%">
+          <img src="assets/images/two_people.jpg" alt="edinburgh" style="width:100%">
         </div>
       </div>
       <div class="row pb-3">
@@ -114,7 +82,7 @@
           <p>At MK Time, we believe that a true luxury experience extends beyond the purchase. That’s why we offer comprehensive watch repair and servicing to ensure your timepiece continues to perform at its best for years to come. Whether it’s a routine maintenance, battery replacement, or more intricate repairs, our expert technicians are dedicated to preserving the craftsmanship and precision of your MK Time watch. Trust us to handle your timepiece with the utmost care and attention, keeping it in perfect working order, just as it was the day you first wore it.</p>
         </div>
         <div class="col-sm-6 order-sm-first">
-          <img src="images/watch_repair.jpg" alt="edinburgh" style="width:100%">
+          <img src="assets/images/watch_repair.jpg" alt="edinburgh" style="width:100%">
         </div>
       </div>
     </div>

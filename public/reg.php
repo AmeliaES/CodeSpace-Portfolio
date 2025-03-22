@@ -1,3 +1,7 @@
+<?php
+include '../templates/nav.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="MK Time - Elegance and Precision in Watchmaking">
     <meta property="og:description" content="Discover the story of MK Time, founded in Edinburgh with a passion for creating timeless, elegant timepieces that blend craftsmanship and innovation.">
-    <meta property="og:image" content="https://codespace-portfolio-gs4a.onrender.com/images/banner_image.jpg">
-    <meta property="og:url" content="https://codespace-portfolio-gs4a.onrender.com">
     <meta property="og:type" content="website">
     <title>MK TIME</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -19,38 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">MK TIME</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="products.html">Products</a>
-          </li>
-           
-          </ul>
-          <span class="navbar-text">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
-        <li class="nav-item">
-              <a class="nav-link" href="reg.html">Register</a>
-            </li>
-      </ul>
-          </span>
-        </div>
-      </div>
-    </nav>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
