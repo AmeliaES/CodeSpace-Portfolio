@@ -1,6 +1,6 @@
 # Portfolio Website
 
-This is a repo for Edinburgh College CodeSpace course to showcase skills learnt during the Induction course.
+This project demonstrates my web dev skills using PHP, html, CSS, SQL as well as testing using Cypress.
 
 ## The Brief
 
@@ -8,18 +8,17 @@ This is a repo for Edinburgh College CodeSpace course to showcase skills learnt 
 
 Due to the increasing popularity, they anticipate a wide range of end-users and want a website that will appeal to the target clientele. They want the site to bring in more business and hence profits as well as promoting their unique designs and elegant time pieces."
 
-Minimum Requirements 
-In order to meet the clients expectations; the following features are required.
-
-* Landing Page
-* Product page
-* Register/Create Account (form) page
-* Login (form) page
-
-## Live demo
-
-A demo version of this website is live [here](https://codespace-portfolio-gs4a.onrender.com/). Please note it may take a while to load as it is deployed on a free tier on Render.
-
-
 ## Disclaimer
 This is a dummy website to showcase my coding skills and not an actual shop website. The text content is fictional and was generated using chatGPT and all images were found online from [Unsplash](https://help.unsplash.com/en/), [pexels](https://www.pexels.com/) or creative commons google image searches.
+
+## Making the website:
+
+### Using githooks
+This ensures the files are copied to the web server at XAMPP, so I don't have to manually do this. Certain file types and folders are ignored for transfer. eg. the `sql/` folder is not copied. I wasn't sure where to put the SQL scripts to initially make the database in phpMyAdmin but wanted to make sure they are git tracked.
+
+`SOURCE_DIR` and `TARGET_DIR` will need changing. Better practice would be to put this in a `.env` file perhaps, or a `.config` file. So that this project can run on different computers more easily.
+
+To configure the git hook run:
+```
+git config core.hooksPath .githooks
+```
