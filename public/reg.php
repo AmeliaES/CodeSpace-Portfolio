@@ -1,5 +1,116 @@
 <?php
 include '../templates/nav.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  // Connect to the database.
+  require '../config/database.php';
+
+  # Initialize an error array.
+  $errors = array();
+
+  // Get the form data, check for empty values in fields that are required.
+  if (empty($_POST['firstName'])) {
+    $errors[] = 'Please enter your first name.';
+  } else {
+    $firstName = mysqli_real_escape_string($link, trim($_POST['firstName']));
+  }
+
+  if (empty($_POST['lastName'])) {
+    $errors[] = 'Please enter your last name.';
+  } else {
+    $lastName = mysqli_real_escape_string($link, trim($_POST['lastName']));
+  }
+
+  if (empty($_POST['email'])) {
+    $errors[] = 'Please enter your email address.';
+  } else {
+    $email = mysqli_real_escape_string($link, trim($_POST['email']));
+  }
+
+  if (empty($_POST['phone'])) {
+    $errors[] = 'Please enter your phone number.';
+  } else {
+    $phone = mysqli_real_escape_string($link, trim($_POST['phone']));
+  }
+
+  if (empty($_POST['adLine1'])) {
+    $errors[] = 'Please enter your address line 1.';
+  } else {
+    $adLine1 = mysqli_real_escape_string($link, trim($_POST['adLine1']));
+  }
+
+  if (empty($_POST['adLine2'])) {
+    $errors[] = 'Please enter your address line 2.';
+  } else {
+    $adLine2 = mysqli_real_escape_string($link, trim($_POST['adLine2']));
+  }
+
+  if (empty($_POST['country'])) {
+    $errors[] = 'Please enter your country.';
+  } else {
+    $country = mysqli_real_escape_string($link, trim($_POST['country']));
+  }
+
+  // check password fields are not empty
+  if (empty($_POST['password'])) {
+    $errors[] = 'Please enter a password.';
+  } else {
+    $password = mysqli_real_escape_string($link, trim($_POST['password']));
+  }
+
+  if (empty($_POST['confirmPassword'])) {
+    $errors[] = 'Please confirm your password.';
+  } else {
+    $confirmPassword = mysqli_real_escape_string($link, trim($_POST['confirmPassword']));
+  }
+
+  // Check passwords match
+  if ($password != $confirmPassword) {
+    $errors[] = 'Passwords do not match.';
+  }
+
+  // Check if email address is a valid email
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Invalid email format";
+  }
+
+  // Check if email address is already registered
+  if (empty($errors)) {
+    $query = "SELECT user_id FROM users WHERE email='$email'";
+    $result = @mysqli_query($link, $query);
+    // Check if query returns any rows, as this means email already registered
+    if (mysqli_num_rows($result) != 0) {
+      $errors[] =
+        'Email address already registered. <a class="alert-link" href="login.php">Sign In Here.</a>';
+    }
+  }
+
+  // If no errors, insert user data into the database
+  // The NOW() function is used to insert the current timestamp as the registration date.
+  if (empty($errors)) {
+    $query = "INSERT INTO users (first_name, last_name, email, phone_number, address_line_1, address_line_2, country, password, reg_date) 
+	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$password', NOW() )";
+    $result = @mysqli_query($link, $query);
+    if ($result) {
+      echo '
+      <p>You are now registered.</p>
+	    <a class="alert-link" href="login.php">Login Here.</a>';
+    }
+
+    # Close database connection.
+    mysqli_close($link);
+    exit();
+  } else {
+    echo '<h4 class="alert-heading" id="err_msg">The following error(s) occurred:</h4>';
+    foreach ($errors as $msg) {
+      echo " - $msg<br>";
+    }
+    echo '<p>Please try again.</p></div>';
+    # Close database connection.
+    mysqli_close($link);
+  }
+}
 ?>
 
 <!doctype html>
@@ -119,116 +230,3 @@ include '../templates/nav.php';
 </body>
 
 </html>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  // Connect to the database.
-  require '../includes/database.php';
-
-  # Initialize an error array.
-  $errors = array();
-
-  // Get the form data, check for empty values in fields that are required.
-  if (empty($_POST['firstName'])) {
-    $errors[] = 'Please enter your first name.';
-  } else {
-    $firstName = mysqli_real_escape_string($link, trim($_POST['firstName']));
-  }
-
-  if (empty($_POST['lastName'])) {
-    $errors[] = 'Please enter your last name.';
-  } else {
-    $lastName = mysqli_real_escape_string($link, trim($_POST['lastName']));
-  }
-
-  if (empty($_POST['email'])) {
-    $errors[] = 'Please enter your email address.';
-  } else {
-    $email = mysqli_real_escape_string($link, trim($_POST['email']));
-  }
-
-  if (empty($_POST['phone'])) {
-    $errors[] = 'Please enter your phone number.';
-  } else {
-    $phone = mysqli_real_escape_string($link, trim($_POST['phone']));
-  }
-
-  if (empty($_POST['adLine1'])) {
-    $errors[] = 'Please enter your address line 1.';
-  } else {
-    $adLine1 = mysqli_real_escape_string($link, trim($_POST['adLine1']));
-  }
-
-  if (empty($_POST['adLine2'])) {
-    $errors[] = 'Please enter your address line 2.';
-  } else {
-    $adLine2 = mysqli_real_escape_string($link, trim($_POST['adLine2']));
-  }
-
-  if (empty($_POST['country'])) {
-    $errors[] = 'Please enter your country.';
-  } else {
-    $country = mysqli_real_escape_string($link, trim($_POST['country']));
-  }
-
-  // check password fields are not empty
-  if (empty($_POST['password'])) {
-    $errors[] = 'Please enter a password.';
-  } else {
-    $password = mysqli_real_escape_string($link, trim($_POST['password']));
-  }
-
-  if (empty($_POST['confirmPassword'])) {
-    $errors[] = 'Please confirm your password.';
-  } else {
-    $confirmPassword = mysqli_real_escape_string($link, trim($_POST['confirmPassword']));
-  }
-
-  // Check passwords match
-  if ($password != $confirmPassword) {
-    $errors[] = 'Passwords do not match.';
-  }
-
-  // Check if email address is a valid email
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Invalid email format";
-  }
-
-  // Check if email address is already registered
-  if (empty($errors)) {
-    $query = "SELECT user_id FROM users WHERE email='$email'";
-    $result = @mysqli_query($link, $query);
-    // Check if query returns any rows, as this means email already registered
-    if (mysqli_num_rows($result) != 0) {
-      $errors[] =
-        'Email address already registered. <a class="alert-link" href="login.php">Sign In Here.</a>';
-    }
-  }
-
-  // If no errors, insert user data into the database
-  // The NOW() function is used to insert the current timestamp as the registration date.
-  if (empty($errors)) {
-    $query = "INSERT INTO users (first_name, last_name, email, phone_number, address_line_1, address_line_2, country, password, reg_date) 
-	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$password', NOW() )";
-    $result = @mysqli_query($link, $query);
-    if ($result) {
-      echo '
-      <p>You are now registered.</p>
-	    <a class="alert-link" href="login.php">Login Here.</a>';
-    }
-
-    # Close database connection.
-    mysqli_close($link);
-    exit();
-  } else {
-    echo '<h4 class="alert-heading" id="err_msg">The following error(s) occurred:</h4>';
-    foreach ($errors as $msg) {
-      echo " - $msg<br>";
-    }
-    echo '<p>Please try again.</p></div>';
-    # Close database connection.
-    mysqli_close($link);
-  }
-}
-?>
