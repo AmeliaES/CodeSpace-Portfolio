@@ -41,11 +41,11 @@ if (isset($errors) && !empty($errors)) {
                 <form id="loginForm" action="login_action.php" method="POST">
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" name="email" required placeholder="Enter email">
+                        <input type="email" class="form-control" id="loginEmail" name="email" required placeholder="Enter email" data-cy="loginEmail">
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" name="pass" required placeholder="Password">
+                        <input type="password" class="form-control" id="loginPassword" name="pass" required placeholder="Password" data-cy="loginPassword">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                     <div class="text-center mt-3">

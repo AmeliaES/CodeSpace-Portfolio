@@ -151,6 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <label for="firstName" class="form-label">First Name</label>
               <input type="text"
                 class="form-control"
+                data-cy="firstName"
                 id="firstName"
                 name="firstName"
                 required
@@ -161,6 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <label for="lastName" class="form-label">Last Name</label>
               <input type="text"
                 class="form-control"
+                data-cy="lastName"
                 id="lastName"
                 name="lastName"
                 required
@@ -173,6 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="email" class="form-label">Email Address</label>
             <input type="email"
               class="form-control"
+              data-cy="email"
               id="email"
               name="email"
               required
@@ -181,6 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="phone" class="form-label">Phone Number</label>
             <input type="tell"
               class="form-control"
+              data-cy="phone"
               id="phone"
               name="phone"
               required
@@ -189,6 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="adLine1" class="form-label">Address Line 1</label>
             <input type="text"
               class="form-control"
+              data-cy="adLine1"
               id="adLine1"
               name="adLine1"
               required
@@ -197,6 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="adLine2" class="form-label">Address Line 2</label>
             <input type="text"
               class="form-control"
+              data-cy="adLine2"
               id="adLine2"
               name="adLine2"
               required
@@ -205,6 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="country" class="form-label">Country</label>
             <input type="text"
               class="form-control"
+              data-cy="country"
               id="country"
               name="country"
               required
@@ -213,6 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="password" class="form-label">Password</label>
             <input type="password"
               class="form-control"
+              data-cy="password"
               id="password"
               name="password"
               required
@@ -220,12 +228,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password"
               class="form-control"
+              data-cy="confirmPassword"
               id="confirmPassword"
               name="confirmPassword"
               required
               placeholder="Confirm Password">
           </div>
-          <button type="submit" class="btn btn-primary w-100">Register</button>
+          <button type="submit" data-cy="submit" name="submit" id="submit" class="btn btn-primary w-100">Register</button>
           <div class="text-center mt-3">
             <span>Already have an account? <a href="login.php">Login here</a></span>
           </div>
