@@ -109,7 +109,7 @@ include '../templates/nav.php';
           </div>
           <button type="submit" class="btn btn-primary w-100">Register</button>
           <div class="text-center mt-3">
-            <span>Already have an account? <a href="login.html">Login here</a></span>
+            <span>Already have an account? <a href="login.php">Login here</a></span>
           </div>
         </form>
 
