@@ -1,4 +1,5 @@
 <?php
+include 'session.php';
 include '../templates/nav.php';
 ?>
 

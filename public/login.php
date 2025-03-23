@@ -1,5 +1,14 @@
 <?php
 include '../templates/nav.php';
+
+# Display any error messages if present.
+if (isset($errors) && !empty($errors)) {
+    echo '<p id="err_msg">Oops! There was a problem:<br>';
+    foreach ($errors as $msg) {
+        echo " - $msg<br>";
+    }
+    echo 'Please try again or <a href="register.php">Register</a></p>';
+}
 ?>
 
 <!doctype html>
@@ -29,14 +38,14 @@ include '../templates/nav.php';
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center mt-5">Login</h2>
-                <form id="loginForm">
+                <form id="loginForm" action="login_action.php" method="POST">
                     <div class="mb-3">
                         <label for="loginEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" required placeholder="Enter email">
+                        <input type="email" class="form-control" id="loginEmail" name="email" required placeholder="Enter email">
                     </div>
                     <div class="mb-3">
                         <label for="loginPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" required placeholder="Password">
+                        <input type="password" class="form-control" id="loginPassword" name="pass" required placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                     <div class="text-center mt-3">
