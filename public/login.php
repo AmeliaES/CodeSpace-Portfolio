@@ -40,7 +40,7 @@ include '../templates/nav.php';
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                     <div class="text-center mt-3">
-                        <span>Don't have an account? <a href="reg.html">Register here</a></span>
+                        <span>Don't have an account? <a href="reg.php">Register here</a></span>
                     </div>
                 </form>
             </div>
