@@ -57,16 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = 'Please enter a password.';
   } else {
     $password = mysqli_real_escape_string($link, trim($_POST['password']));
+    $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
   }
 
   if (empty($_POST['confirmPassword'])) {
     $errors[] = 'Please confirm your password.';
   } else {
     $confirmPassword = mysqli_real_escape_string($link, trim($_POST['confirmPassword']));
+    $confirmPasswordHashed = password_hash($confirmPassword, PASSWORD_DEFAULT);
   }
 
   // Check passwords match
-  if ($password != $confirmPassword) {
+  if ($passwordHashed != $confirmPasswordHashed) {
     $errors[] = 'Passwords do not match.';
   }
 
@@ -90,10 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // The NOW() function is used to insert the current timestamp as the registration date.
   if (empty($errors)) {
     $query = "INSERT INTO users (first_name, last_name, email, phone_number, address_line_1, address_line_2, country, password, reg_date) 
-	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$password', NOW() )";
+	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$passwordHashed', NOW() )";
     $result = @mysqli_query($link, $query);
     if ($result) {
       echo '
+      include "../templates/nav.php";
       <p>You are now registered.</p>
 	    <a class="alert-link" href="login.php">Login Here.</a>';
     }
@@ -102,11 +105,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_close($link);
     exit();
   } else {
-    echo '<h4 class="alert-heading" id="err_msg">The following error(s) occurred:</h4>';
+    echo 'include "../templates/nav.php"; <h4 class="alert-heading" id="err_msg">The following error(s) occurred:</h4>';
     foreach ($errors as $msg) {
       echo " - $msg<br>";
     }
-    echo '<p>Please try again.</p></div>';
+    echo 'include "../templates/nav.php"; <p>Please try again.</p></div>';
     # Close database connection.
     mysqli_close($link);
   }
