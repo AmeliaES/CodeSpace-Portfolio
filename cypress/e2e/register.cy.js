@@ -27,5 +27,10 @@ describe('registration page creates new user', () => {
     cy.get('[data-cy="password"]').type('123456');
     cy.get('[data-cy="confirmPassword"]').type('123456');
     cy.get('[data-cy="submit"]').click();
+    // get toast and check for success message
+    cy.get('[data-cy="toastText"]').should(
+      'have.text',
+      'You are now registered'
+    );
   });
 });
