@@ -20,12 +20,6 @@ This ensures the files are copied to the web server at XAMPP, so I don't have to
 
 `SOURCE_DIR` and `TARGET_DIR` will need changing. Better practice would be to put this in a `.env` file perhaps, or a `.config` file. So that this project can run on different computers more easily.
 
-To configure the git hook run:
-
-```
-git config core.hooksPath .githooks
-```
-
 ## Things I learnt:
 
 - [PHP Form validation](https://www.w3schools.com/php/php_form_validation.asp): Use `<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>` to protect against cross-site scripting (XSS).
