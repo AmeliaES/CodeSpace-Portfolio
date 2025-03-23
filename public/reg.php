@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               placeholder="Enter your email address"
               value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="number"
+            <input type="tell"
               class="form-control"
               id="phone"
               name="phone"
