@@ -27,33 +27,33 @@ include '../templates/nav.php';
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h2 class="text-center mt-5">Register</h2>
-        <form id="registrationForm" class="mb-5">
+        <form id="registrationForm" class="mb-5" method="POST" action="reg.php">
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="regFirstName" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="regFirstName" required placeholder="Enter your first name">
+              <input type="text" class="form-control" id="regFirstName" name="regFirstName" required placeholder="Enter your first name">
             </div>
             <div class="col-md-6">
               <label for="regLastName" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="regLastName" required placeholder="Enter your last name">
+              <input type="text" class="form-control" id="regLastName" name="regLastName" required placeholder="Enter your last name">
             </div>
           </div>
 
           <div class="row mb-3">
             <label for="regEmail" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="regEmail" required placeholder="Enter your email address">
+            <input type="email" class="form-control" id="regEmail" name="regEmail" required placeholder="Enter your email address">
             <label for="regPhone" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="regEmail" required placeholder="Enter your phone number">
+            <input type="number" class="form-control" id="regPhone" name="regPhone" required placeholder="Enter your phone number">
             <label for="regAdLine1" class="form-label">Address Line 1</label>
-            <input type="text" class="form-control" id="AdLine1" required placeholder="Enter your address line 1">
-            <label for="regAdLine1" class="form-label">Address Line 2</label>
-            <input type="text" class="form-control" id="regAdLine1" required placeholder="Enter your address line 2">
+            <input type="text" class="form-control" id="regAdLine1" name="regAdLine1" required placeholder="Enter your address line 1">
+            <label for="regAdLine2" class="form-label">Address Line 2</label>
+            <input type="text" class="form-control" id="regAdLine2" name="regAdLine2" required placeholder="Enter your address line 2">
             <label for="regCountry" class="form-label">Country</label>
-            <input type="text" class="form-control" id="regCountry" required placeholder="Enter your country">
+            <input type="text" class="form-control" id="regCountry" name="regCountry" required placeholder="Enter your country">
             <label for="regPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="regPassword" required placeholder="Password">
+            <input type="password" class="form-control" id="regPassword" name="regPassword" required placeholder="Password">
             <label for="regConfirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="regConfirmPassword" required placeholder="Confirm Password">
+            <input type="password" class="form-control" id="regConfirmPassword" name="regConfirmPassword" required placeholder="Confirm Password">
           </div>
           <button type="submit" class="btn btn-primary w-100">Register</button>
           <div class="text-center mt-3">
@@ -67,3 +67,11 @@ include '../templates/nav.php';
 </body>
 
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  // Connect to the database.
+  require '../includes/database.php';
+}
+?>
