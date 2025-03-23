@@ -90,8 +90,8 @@ include '../templates/nav.php';
               id="regCountry"
               name="regCountry"
               required
-              placeholder="Enter your country">
-            value="<?php if (isset($_POST['country'])) echo $_POST['country']; ?>">
+              placeholder="Enter your country"
+              value="<?php if (isset($_POST['country'])) echo $_POST['country']; ?>">
             <label for="regPassword" class="form-label">Password</label>
             <input type="password"
               class="form-control"
@@ -130,56 +130,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errors = array();
 
   // Get the form data, check for empty values in fields that are required.
-  if (empty($regFirstName)) {
+  if (empty($_POST['regFirstName'])) {
     $errors[] = 'Please enter your first name.';
   } else {
     $firstName = mysqli_real_escape_string($link, trim($_POST['regFirstName']));
   }
 
-  if (empty($regFastName)) {
+  if (empty($_POST['regLastName'])) {
     $errors[] = 'Please enter your last name.';
   } else {
     $lastName = mysqli_real_escape_string($link, trim($_POST['regLastName']));
   }
 
-  if (empty($regEmail)) {
+  if (empty($_POST['regEmail'])) {
     $errors[] = 'Please enter your email address.';
   } else {
     $email = mysqli_real_escape_string($link, trim($_POST['regEmail']));
   }
 
-  if (empty($regPhone)) {
+  if (empty($_POST['regPhone'])) {
     $errors[] = 'Please enter your phone number.';
   } else {
     $phone = mysqli_real_escape_string($link, trim($_POST['regPhone']));
   }
 
-  if (empty($regAdLine1)) {
+  if (empty($_POST['regAdLine1'])) {
     $errors[] = 'Please enter your address line 1.';
   } else {
     $adLine1 = mysqli_real_escape_string($link, trim($_POST['regAdLine1']));
   }
 
-  if (empty($regAdLine2)) {
+  if (empty($_POST['regAdLine2'])) {
     $errors[] = 'Please enter your address line 2.';
   } else {
     $adLine2 = mysqli_real_escape_string($link, trim($_POST['regAdLine2']));
   }
 
-  if (empty($regCountry)) {
+  if (empty($_POST['regCountry'])) {
     $errors[] = 'Please enter your country.';
   } else {
     $country = mysqli_real_escape_string($link, trim($_POST['regCountry']));
   }
 
   // check password fields are not empty
-  if (empty($regPassword)) {
+  if (empty($_POST['regPassword'])) {
     $errors[] = 'Please enter a password.';
   } else {
     $password = mysqli_real_escape_string($link, trim($_POST['regPassword']));
   }
 
-  if (empty($regConfirmPassword)) {
+  if (empty($_POST['regConfirmPassword'])) {
     $errors[] = 'Please confirm your password.';
   } else {
     $confirmPassword = mysqli_real_escape_string($link, trim($_POST['regConfirmPassword']));
@@ -197,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // Check if email address is already registered
   if (empty($errors)) {
-    $query = "SELECT user_id FROM users WHERE email='$e'";
+    $query = "SELECT user_id FROM users WHERE email='$email'";
     $result = @mysqli_query($link, $query);
     // Check if query returns any rows, as this means email already registered
     if (mysqli_num_rows($result) != 0) {
