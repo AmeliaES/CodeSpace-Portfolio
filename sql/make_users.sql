@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS users (
     address_line_1 VARCHAR(255) NOT NULL,
     address_line_2 VARCHAR(255),
     country VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    reg_date DATETIME NOT NULL
 );
