@@ -4,6 +4,10 @@
 SOURCE_DIR="/Users/aes/GitRepos/CodeSpace-Portfolio/"
 DEST_DIR="/Applications/XAMPP/xamppfiles/htdocs/codespace/MKTIME/"
 
+# Copy this git commit file to git repo for git tracking
+cp .git/hooks/post-commit post-commit-example
+
+
 # Log file for errors
 LOG_FILE="/tmp/post-commit-hook.log"
 
@@ -20,11 +24,11 @@ fi
 
 # Use rsync to copy files, excluding .git directory and other unnecessary files
 rsync -av --exclude='.git/' \
-         --exclude='.githooks/' \
          --exclude='.gitignore' \
          --exclude='.DS_Store' \
          --exclude='sql/' \
          --exclude='node_modules/' \
+         --exclude='post-commit-example' \
          --delete \
          "$SOURCE_DIR" "$DEST_DIR" 2>> "$LOG_FILE"
 
@@ -37,7 +41,6 @@ else
 fi
 
 ls -laR $DEST_DIR
-
 
 # Set directory permissions to 755 (read and execute for everyone, write for owner)
 chmod 755 $DEST_DIR/public/assets
