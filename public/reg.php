@@ -1,6 +1,8 @@
 <?php
 include '../templates/nav.php';
 
+session_start(); // Start session for toast messages
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // Connect to the database.
@@ -93,25 +95,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = "INSERT INTO users (first_name, last_name, email, phone_number, address_line_1, address_line_2, country, password, reg_date) 
 	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$passwordHashed', NOW() )";
     $result = @mysqli_query($link, $query);
-    if ($result) {
-      echo '
-      include "../templates/nav.php";
-      <p>You are now registered.</p>
-	    <a class="alert-link" href="login.php">Login Here.</a>';
-    }
 
-    # Close database connection.
-    mysqli_close($link);
-    exit();
-  } else {
-    echo 'include "../templates/nav.php"; <h4 class="alert-heading" id="err_msg">The following error(s) occurred:</h4>';
-    foreach ($errors as $msg) {
-      echo " - $msg<br>";
+    if ($result) {
+      // Success: store success message in session and redirect to login page
+      $_SESSION['toast_msg'] = "You are now registered! <a href='login.php' class='text-white fw-bold'>Login here</a>";
+      $_SESSION['toast_type'] = "success"; // Set toast type to success
+
+      // Redirect to the reg page after success
+      header("Location: reg.php");
+      exit(); // Stop further script execution after the redirect
+    } else {
+      // Database error: store error message in session
+      $_SESSION['toast_msg'] = "There was an error registering your account. Please try again.";
+      $_SESSION['toast_type'] = "danger"; // Set toast type to danger
     }
-    echo 'include "../templates/nav.php"; <p>Please try again.</p></div>';
-    # Close database connection.
-    mysqli_close($link);
+  } else {
+    // If there are validation errors, store the error messages in session
+    $_SESSION['toast_msg'] = implode("<br>", $errors); // Concatenate errors with <br>
+    $_SESSION['toast_type'] = "danger"; // Set toast type to danger
   }
+
+  // Close database connection (no redirect if errors)
+  mysqli_close($link);
 }
 ?>
 
@@ -229,6 +234,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
     </div>
   </div>
+  <!-- Toast Container -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="toastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true" autohide="false">
+      <div class="d-flex">
+        <div class="toast-body" id="toastText">
+          Toast message
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+  <?php
+  if (isset($_SESSION['toast_msg'])):
+  ?>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set the message in the toast
+        document.getElementById('toastText').innerHTML = `<?php echo $_SESSION['toast_msg']; ?>`;
+        // Change the toast color based on success or error
+        document.getElementById('toastMessage').classList.add('bg-<?php echo $_SESSION['toast_type']; ?>');
+        var toast = new bootstrap.Toast(document.getElementById('toastMessage'));
+        toast.show();
+      });
+    </script>
+  <?php
+    // Clear session messages after display
+    unset($_SESSION['toast_msg']);
+    unset($_SESSION['toast_type']);
+  endif;
+  ?>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
