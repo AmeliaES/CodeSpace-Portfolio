@@ -61,9 +61,9 @@ include '../templates/nav.php';
     <div class="col-sm-10 pt-3">
       <?php
       if (isset($_SESSION['user_id'])) {
-        echo '<h4 class="text-center" style="color: white;">Welcome, ' . htmlspecialchars($_SESSION['firstName']) . ', to MK Time</h4>';
+        echo '<h4 class="text-center" style="color: white;">Welcome, ' . htmlspecialchars($_SESSION['first_name']) . ', to MKTime</h4>';
       } else {
-        echo '<h4 class="text-center" style="color: white;">Welcome to MK Time</h4>';
+        echo '<h4 class="text-center" style="color: white;">Welcome to MKTime</h4>';
       }
       ?>
     </div>
