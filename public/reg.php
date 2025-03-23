@@ -27,7 +27,7 @@ include '../templates/nav.php';
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h2 class="text-center mt-5">Register</h2>
-        <form id="registrationForm" class="mb-5" method="POST" action="reg.php">
+        <form id="registrationForm" class="mb-5" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="regFirstName" class="form-label">First Name</label>
@@ -73,5 +73,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // Connect to the database.
   require '../includes/database.php';
+
+  # Initialize an error array.
+  $errors = array();
+
+  // Get the form data, check for empty values in fields that are required.
+  if (empty($firstName)) {
+    $errors[] = 'Please enter your first name.';
+  } else {
+    $firstName = mysqli_real_escape_string($link, trim($_POST['regFirstName']));
+  }
 }
 ?>
