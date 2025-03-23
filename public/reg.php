@@ -57,18 +57,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = 'Please enter a password.';
   } else {
     $password = mysqli_real_escape_string($link, trim($_POST['password']));
-    $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
   }
 
   if (empty($_POST['confirmPassword'])) {
     $errors[] = 'Please confirm your password.';
   } else {
     $confirmPassword = mysqli_real_escape_string($link, trim($_POST['confirmPassword']));
-    $confirmPasswordHashed = password_hash($confirmPassword, PASSWORD_DEFAULT);
   }
 
   // Check passwords match
-  if ($passwordHashed != $confirmPasswordHashed) {
+  if ($password != $confirmPassword) {
     $errors[] = 'Passwords do not match.';
   }
 
@@ -91,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // If no errors, insert user data into the database
   // The NOW() function is used to insert the current timestamp as the registration date.
   if (empty($errors)) {
+    $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
     $query = "INSERT INTO users (first_name, last_name, email, phone_number, address_line_1, address_line_2, country, password, reg_date) 
 	VALUES ('$firstName', '$lastName', '$email', '$phone', '$adLine1', '$adLine2', '$country', '$passwordHashed', NOW() )";
     $result = @mysqli_query($link, $query);

@@ -28,4 +28,6 @@ git config core.hooksPath .githooks
 
 ## Things I learnt:
 
-- [https://www.w3schools.com/php/php_form_validation.asp](PHP Form validation): Use `<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>` to protect against cross-site scripting (XSS).
+- [PHP Form validation](https://www.w3schools.com/php/php_form_validation.asp): Use `<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>` to protect against cross-site scripting (XSS).
+
+- [Salting and Hashing Passwords](https://phptherightway.com/): Scroll down to section on "Password Hashing". `password_hash()` also takes care of salting (adding a random string to each password before hashing).
