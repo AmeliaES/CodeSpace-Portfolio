@@ -27,24 +27,24 @@ include '../templates/nav.php';
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h2 class="text-center mt-5">Register</h2>
-        <form id="registrationForm" class="mb-5" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <form id="registrationForm" class="mb-5" method="POST" action="reg.php">
           <div class="row mb-3">
             <div class="col-md-6">
-              <label for="regFirstName" class="form-label">First Name</label>
+              <label for="firstName" class="form-label">First Name</label>
               <input type="text"
                 class="form-control"
-                id="regFirstName"
-                name="regFirstName"
+                id="firstName"
+                name="firstName"
                 required
                 placeholder="Enter your first name"
                 value="<?php if (isset($_POST['firstName'])) echo $_POST['firstName']; ?>"> <!-- The value attribute is used to retain and display previously submitted values if the form is resubmitted due to errors.  -->
             </div>
             <div class="col-md-6">
-              <label for="regLastName" class="form-label">Last Name</label>
+              <label for="lastName" class="form-label">Last Name</label>
               <input type="text"
                 class="form-control"
-                id="regLastName"
-                name="regLastName"
+                id="lastName"
+                name="lastName"
                 required
                 placeholder="Enter your last name"
                 value="<?php if (isset($_POST['lastName'])) echo $_POST['lastName']; ?>">
@@ -52,58 +52,58 @@ include '../templates/nav.php';
           </div>
 
           <div class="row mb-3">
-            <label for="regEmail" class="form-label">Email Address</label>
+            <label for="email" class="form-label">Email Address</label>
             <input type="email"
               class="form-control"
-              id="regEmail"
-              name="regEmail"
+              id="email"
+              name="email"
               required
               placeholder="Enter your email address"
               value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
-            <label for="regPhone" class="form-label">Phone Number</label>
+            <label for="phone" class="form-label">Phone Number</label>
             <input type="number"
               class="form-control"
-              id="regPhone"
-              name="regPhone"
+              id="phone"
+              name="phone"
               required
               placeholder="Enter your phone number"
               value="<?php if (isset($_POST['phone'])) echo $_POST['phone']; ?>">
-            <label for="regAdLine1" class="form-label">Address Line 1</label>
+            <label for="adLine1" class="form-label">Address Line 1</label>
             <input type="text"
               class="form-control"
-              id="regAdLine1"
-              name="regAdLine1"
+              id="adLine1"
+              name="adLine1"
               required
               placeholder="Enter your address line 1"
               value="<?php if (isset($_POST['adLine1'])) echo $_POST['adLine1']; ?>">
-            <label for="regAdLine2" class="form-label">Address Line 2</label>
+            <label for="adLine2" class="form-label">Address Line 2</label>
             <input type="text"
               class="form-control"
-              id="regAdLine2"
-              name="regAdLine2"
+              id="adLine2"
+              name="adLine2"
               required
               placeholder="Enter your address line 2"
               value="<?php if (isset($_POST['adLine2'])) echo $_POST['adLine2']; ?>">
-            <label for="regCountry" class="form-label">Country</label>
+            <label for="country" class="form-label">Country</label>
             <input type="text"
               class="form-control"
-              id="regCountry"
-              name="regCountry"
+              id="country"
+              name="country"
               required
               placeholder="Enter your country"
               value="<?php if (isset($_POST['country'])) echo $_POST['country']; ?>">
-            <label for="regPassword" class="form-label">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input type="password"
               class="form-control"
-              id="regPassword"
-              name="regPassword"
+              id="password"
+              name="password"
               required
               placeholder="Password">
-            <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
             <input type="password"
               class="form-control"
-              id="regConfirmPassword"
-              name="regConfirmPassword"
+              id="confirmPassword"
+              name="confirmPassword"
               required
               placeholder="Confirm Password">
           </div>
@@ -130,59 +130,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errors = array();
 
   // Get the form data, check for empty values in fields that are required.
-  if (empty($_POST['regFirstName'])) {
+  if (empty($_POST['firstName'])) {
     $errors[] = 'Please enter your first name.';
   } else {
-    $firstName = mysqli_real_escape_string($link, trim($_POST['regFirstName']));
+    $firstName = mysqli_real_escape_string($link, trim($_POST['firstName']));
   }
 
-  if (empty($_POST['regLastName'])) {
+  if (empty($_POST['lastName'])) {
     $errors[] = 'Please enter your last name.';
   } else {
-    $lastName = mysqli_real_escape_string($link, trim($_POST['regLastName']));
+    $lastName = mysqli_real_escape_string($link, trim($_POST['lastName']));
   }
 
-  if (empty($_POST['regEmail'])) {
+  if (empty($_POST['email'])) {
     $errors[] = 'Please enter your email address.';
   } else {
-    $email = mysqli_real_escape_string($link, trim($_POST['regEmail']));
+    $email = mysqli_real_escape_string($link, trim($_POST['email']));
   }
 
-  if (empty($_POST['regPhone'])) {
+  if (empty($_POST['phone'])) {
     $errors[] = 'Please enter your phone number.';
   } else {
-    $phone = mysqli_real_escape_string($link, trim($_POST['regPhone']));
+    $phone = mysqli_real_escape_string($link, trim($_POST['phone']));
   }
 
-  if (empty($_POST['regAdLine1'])) {
+  if (empty($_POST['adLine1'])) {
     $errors[] = 'Please enter your address line 1.';
   } else {
-    $adLine1 = mysqli_real_escape_string($link, trim($_POST['regAdLine1']));
+    $adLine1 = mysqli_real_escape_string($link, trim($_POST['adLine1']));
   }
 
-  if (empty($_POST['regAdLine2'])) {
+  if (empty($_POST['adLine2'])) {
     $errors[] = 'Please enter your address line 2.';
   } else {
-    $adLine2 = mysqli_real_escape_string($link, trim($_POST['regAdLine2']));
+    $adLine2 = mysqli_real_escape_string($link, trim($_POST['adLine2']));
   }
 
-  if (empty($_POST['regCountry'])) {
+  if (empty($_POST['country'])) {
     $errors[] = 'Please enter your country.';
   } else {
-    $country = mysqli_real_escape_string($link, trim($_POST['regCountry']));
+    $country = mysqli_real_escape_string($link, trim($_POST['country']));
   }
 
   // check password fields are not empty
-  if (empty($_POST['regPassword'])) {
+  if (empty($_POST['password'])) {
     $errors[] = 'Please enter a password.';
   } else {
-    $password = mysqli_real_escape_string($link, trim($_POST['regPassword']));
+    $password = mysqli_real_escape_string($link, trim($_POST['password']));
   }
 
-  if (empty($_POST['regConfirmPassword'])) {
+  if (empty($_POST['confirmPassword'])) {
     $errors[] = 'Please confirm your password.';
   } else {
-    $confirmPassword = mysqli_real_escape_string($link, trim($_POST['regConfirmPassword']));
+    $confirmPassword = mysqli_real_escape_string($link, trim($_POST['confirmPassword']));
   }
 
   // Check passwords match
