@@ -7,7 +7,7 @@ if (isset($errors) && !empty($errors)) {
     foreach ($errors as $msg) {
         echo " - $msg<br>";
     }
-    echo 'Please try again or <a href="register.php">Register</a></p>';
+    echo 'Please try again or <a href="reg.php">Register</a></p>';
 }
 ?>
 

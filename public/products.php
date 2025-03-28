@@ -51,7 +51,7 @@ require '../config/database.php';
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">' . htmlspecialchars($row['item_price']) . '</li>
                       <li class="list-group-item">
-                        <a href="#" class="btn btn-primary">Add to basket</a>
+                        <a href="add_to_cart.php?id=' . htmlspecialchars($row['item_id']) . '" class="btn btn-primary">Add to basket</a>
                       </li>
                     </ul>
                   </div>
