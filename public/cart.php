@@ -106,13 +106,14 @@ if (!empty($_SESSION['cart']))
 }
 else
 # Or display a message.
-{ echo '<div class="alert alert-secondary" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<p>Your cart is currently empty.</p>
-				</div>
-		</div>' ; }
+{ 
+  echo "<div class='alert alert-secondary' role='alert'>
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close' onclick=\"window.location.href='products.php';\">
+                  <span aria-hidden='true'>&times;</span>
+              </button>
+              <p>Your cart is currently empty.</p>
+        </div>";
+}
 
 
 ?>
