@@ -61,7 +61,9 @@ include '../templates/nav.php';
           style="height: 1em; margin-right: 0.125em; display: inline;" /></a>.</p>
   </div>
 
-  <div class="container-fluid px-5">
+  <div class="container-fluid px-3 px-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-6">  
     <div class="row pb-3">
       <div class="col-sm-6">
         <h5>Founded in Edinburgh</h5>
@@ -88,6 +90,8 @@ include '../templates/nav.php';
       <div class="col-sm-6 order-sm-first">
         <img src="assets/images/watch_repair.jpg" alt="edinburgh" style="width:100%">
       </div>
+    </div>
+    </div>
     </div>
   </div>
 </body>
