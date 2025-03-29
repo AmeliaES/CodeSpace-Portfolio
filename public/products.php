@@ -37,13 +37,13 @@ require '../config/database.php';
           $result = mysqli_query($link, $query);
 
           if (mysqli_num_rows($result) > 0) {
-            echo '<div class="container"><div class="row">';
+            echo '<div class="container"><div class="row row-gap-4">';
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
               echo '
               <div class="col-md-4">
-                <div class="card text-center m-3">
+                <div class="card text-center m-3 d-flex h-100">
                   <img src="../' . htmlspecialchars($row['item_img']) . '" class="card-img-top" alt="...">
-                  <div class="card-body">
+                  <div class="card-body d-flex flex-column">
                     <h5 class="card-title">' . htmlspecialchars($row['item_name']) . '</h5>
                     <p class="card-text">' . htmlspecialchars($row['item_desc']) . '</p>
                   </div>
