@@ -1,13 +1,19 @@
 describe('registration page creates new user', () => {
-  // Clean up the database and remove test user
-  before(() => {
-    // Define the SQL query to delete a user by email
-    const email = 'test+test@MKTIMEdomainForTesting.com';
-    const query = `mysql -u root -S /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock -D MKTIMEportfolio -e "DELETE FROM users WHERE email='${email}'"`;
+  // Clean up the database and remove test user both before and after tests
+  const email = 'test+test@MKTIMEdomainForTesting.com';
+  const deleteUserQuery = `mysql -u root -S /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock -D MKTIMEportfolio -e "DELETE FROM users WHERE email='${email}'"`;
 
-    // Execute the SQL query via exec()
-    cy.exec(query).then((result) => {
-      cy.log(result); // Log the result of the query execution
+  before(() => {
+    // Remove test user before tests start
+    cy.exec(deleteUserQuery).then((result) => {
+      cy.log('User cleanup before test:', result);
+    });
+  });
+
+  after(() => {
+    // Remove test user after tests complete
+    cy.exec(deleteUserQuery).then((result) => {
+      cy.log('User cleanup after test:', result);
     });
   });
 
