@@ -3,38 +3,40 @@ include 'session.php';
 include '../templates/nav.php';
 
 # Set page title and display header section.
-include ('session-cart.php');
+include('session-cart.php');
 
 # Check if form has been submitted for update.
-if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   # Update changed quantity field values.
-  foreach ( $_POST['qty'] as $item_id => $item_qty )
-  {
+  foreach ($_POST['qty'] as $item_id => $item_qty) {
     # Ensure values are integers.
     $id = (int) $item_id;
     $qty = (int) $item_qty;
 
     # Change quantity or delete if zero.
-    if ( $qty == 0 ) { unset ($_SESSION['cart'][$id]); } 
-    elseif ( $qty > 0 ) { $_SESSION['cart'][$id]['quantity'] = $qty; }
+    if ($qty == 0) {
+      unset($_SESSION['cart'][$id]);
+    } elseif ($qty > 0) {
+      $_SESSION['cart'][$id]['quantity'] = $qty;
+    }
   }
 }
 
 # Initialize grand total variable.
-$total = 0; 
+$total = 0;
 
 # Display the cart if not empty.
-if (!empty($_SESSION['cart']))
-{
+if (!empty($_SESSION['cart'])) {
   # Connect to the database.
   require '../config/database.php';
-  
+
   # Retrieve all items in the cart from the 'products' database table.
   $q = "SELECT * FROM products WHERE item_id IN (";
-  foreach ($_SESSION['cart'] as $id => $value) { $q .= $id . ','; }
-  $q = substr( $q, 0, -1 ) . ') ORDER BY item_id ASC';
-  $r = mysqli_query ($link, $q);
+  foreach ($_SESSION['cart'] as $id => $value) {
+    $q .= $id . ',';
+  }
+  $q = substr($q, 0, -1) . ') ORDER BY item_id ASC';
+  $r = mysqli_query($link, $q);
 
   # Display body section with a form and a table.
   echo '<section class="h-100 h-custom" style="background-color: #d3d3d3;">
@@ -52,8 +54,7 @@ if (!empty($_SESSION['cart']))
                   </div>
                   <hr class="my-4">
 					<form action="cart.php" method="post">';
-  while ($row = mysqli_fetch_array ($r, MYSQLI_ASSOC))
-  {
+  while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
     # Calculate sub-totals and grand total.
     $subtotal = $_SESSION['cart'][$row['item_id']]['quantity'] * $_SESSION['cart'][$row['item_id']]['price'];
     $total += $subtotal;
@@ -76,16 +77,15 @@ if (!empty($_SESSION['cart']))
               <h6 class=\"text-muted\">@ {$row['item_price']}</h6>
             </div>
 			<div class=\"col-md-3 col-lg-2 col-xl-2\">
-			<h6 class=\"mb-0\"> &pound ".number_format ($subtotal, 2)."</h6> 
+			<h6 class=\"mb-0\"> &pound " . number_format($subtotal, 2) . "</h6> 
 			</div>
 			</div>
 			";
-			 
   }
-  
+
   # Close the database connection.
-  mysqli_close($link); 
-  
+  mysqli_close($link);
+
   # Display the total.
   echo ' </div>
            </div>
@@ -94,19 +94,18 @@ if (!empty($_SESSION['cart']))
                   <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
                   <hr class="my-4">
 				  <h5 class="text-uppercase">Total price</h5>
-                  <h5>&pound '.number_format($total,2).'</h5>
+                  <h5>&pound ' . number_format($total, 2) . '</h5>
 			  </div>
   <tr><td></td><td></td><td></td>
   <td><input type="submit" name="submit" class="btn btn-dark btn-block m-3" value="Update My Cart"></td>
   </tr>
   <tr><td></td><td></td><td></td>
-  <td><a href="checkout.php?total='.$total.'" class="btn btn-primary btn-block m-3">CHECKOUT : &pound'.number_format($total,2).'</a></td>
+  <td><a href="checkout.php?total=' . $total . '" class="btn btn-primary btn-block m-3">CHECKOUT : &pound' . number_format($total, 2) . '</a></td>
   </table>
   </form>';
-}
-else
+} else
 # Or display a message.
-{ 
+{
   echo "<div class='alert alert-secondary' role='alert'>
               <button type='button' class='close' data-dismiss='alert' aria-label='Close' onclick=\"window.location.href='products.php';\">
                   <span aria-hidden='true'>&times;</span>
