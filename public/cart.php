@@ -59,14 +59,14 @@ if (!empty($_SESSION['cart']))
     $total += $subtotal;
 
     # Display the row/s:
-    echo "<div class=\"row mb-12 d-flex justify-content-between align-items-center\">
+    echo "<div class=\"row mb-4 d-flex justify-content-between align-items-center\">
            <div class=\"col-md-2 col-lg-2 col-xl-2\">
-			<img src=\"{$row['item_img']}\"
+			<img src=\"../{$row['item_img']}\"
                  class=\"img-fluid rounded-3\" 
-				 alt=\"Cotton T-shirt\">
+				 alt=\"Watch\">
 		    </div>
 			<div class=\"col-md-3 col-lg-3 col-xl-3\">
-             <h6 class=\"text-muted\">Shirt</h6>
+             <h6 class=\"text-muted\">Watch</h6>
              <h6 class=\"text-black mb-0\">{$row['item_name']}</h6>
             </div>
 			<div class=\"col-md-3 col-lg-3 col-xl-2 d-flex\">
@@ -89,7 +89,7 @@ if (!empty($_SESSION['cart']))
   # Display the total.
   echo ' </div>
            </div>
-              <div class="col-lg-4 bg-grey">
+              <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center">
                 <div class="p-5">
                   <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
                   <hr class="my-4">
@@ -97,10 +97,10 @@ if (!empty($_SESSION['cart']))
                   <h5>&pound '.number_format($total,2).'</h5>
 			  </div>
   <tr><td></td><td></td><td></td>
-  <td><input type="submit" name="submit" class="btn btn-dark btn-block" value="Update My Cart"></td>
+  <td><input type="submit" name="submit" class="btn btn-dark btn-block m-3" value="Update My Cart"></td>
   </tr>
   <tr><td></td><td></td><td></td>
-  <td><a href="checkout.php?total='.$total.'" class="btn btn-primary btn-block">CHECKOUT : &pound'.number_format($total,2).'</a></td>
+  <td><a href="checkout.php?total='.$total.'" class="btn btn-primary btn-block m-3">CHECKOUT : &pound'.number_format($total,2).'</a></td>
   </table>
   </form>';
 }
