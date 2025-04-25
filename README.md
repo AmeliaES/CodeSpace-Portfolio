@@ -2,6 +2,8 @@
 
 This project demonstrates my web dev skills using PHP, html, CSS, SQL as well as testing using Cypress.
 
+View website at [http://mktime-portfolio.infinityfreeapp.com/public/](http://mktime-portfolio.infinityfreeapp.com/public/)
+
 ## The Brief
 
 "MK Time is a growing E-Commerce business. The company sell Swiss watches which are designed and manufactured in Edinburgh. They pride themselves in selling only quality products and guaranteeing servicing and repair. The company want a dedicated website that will display/view well on all types of devices to help promote the business.
